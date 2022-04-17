@@ -1,0 +1,16 @@
+
+.error {
+    color: red;
+}
+
+#report-search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#report-search-form form {
+    width: 700px;
+    max-width: 90%;
+    min-width: 40%;
+}

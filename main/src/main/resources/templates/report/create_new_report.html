@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Report</title>
+    <div th:replace="fragments/navbar :: requiredLibs"></div>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container container-fluid">
+
+        <h1>Create a new Report.</h1>
+
+        <form action="/report/create" th:object="${report}" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label class="control-label" for="photo">Image</label>
+                <input id="photo" type="file" accept="image/jpeg, image/png" class="form-control" name="photo"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="patient">Patient</label>
+                <select class="form-select" id="patient" th:field="*{patient}">
+                    <option th:each="patient : ${patients}" th:text="${patient.username}" th:value="${patient.id}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="laboratory">Laboratory</label>
+                <select class="form-select" id="laboratory" th:field="*{laboratory}">
+                    <option th:each="lab : ${laboratories}" th:text="${lab.username}" th:value="${lab.id}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="diagnosisTitle">Diagnosis Title</label>
+                <input id="diagnosisTitle" class="form-control" th:field="*{diagnosisTitle}"/>
+                <p  th:if="${#fields.hasErrors('diagnosisTitle')}" class="error">Minimum length is 5 chars.</p>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="diagnosisDetails">Diagnosis Description</label>
+                <input id="diagnosisDetails" class="form-control" style="resize:both;" th:field="*{diagnosisDetails}"/>
+                <p  th:if="${#fields.hasErrors('diagnosisDetails')}" class="error">Minimum length is 10 chars.</p>
+            </div>
+            <button class="btn btn-outline-success" type="submit">Submit</button>
+
+        </form>
+
+    </div>
+    <div th:replace="fragments/navbar :: requiredLibsFooter"></div>
+</body>
+</html>

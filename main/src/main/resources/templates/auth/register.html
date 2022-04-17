@@ -1,0 +1,55 @@
+<html>
+<head>
+    <div th:replace="fragments/navbar :: requiredLibs"></div>
+</head>
+
+<body>
+
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <div class="container container-fluid">
+
+        <form action="/auth/register" th:object="${user}" method="POST" enctype="utf8">
+
+            <div class="form-group">
+                <label class="control-label" for="firstName">Name*</label>
+                <input id="firstName" class="form-control" th:field="*{name}" required/>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="lastName">Surname*</label>
+                <input id="lastName" class="form-control" th:field="*{surname}" required/>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="tc">TC*:</label>
+                <input id="tc" class="form-control" th:field="*{tc}" maxlength="11" minlength="11" required/>
+                <p  th:if="${#fields.hasErrors('tc')}" class="error">Invalid Tc. Must be unique</p>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="username">Username*</label>
+                <input id="username" class="form-control" th:field="*{username}" required/>
+                <p  th:if="${#fields.hasErrors('username')}" class="error">Invalid Username</p>
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label">Password*</label>
+                <input type="password" id="password" class="form-control" th:field="*{password}" required/>
+            </div>
+            <br>
+            <div class="form-group">
+                <select th:field="*{role}" class="form-select">
+                    <option selected="selected" th:value="ROLE_USER">User (Patient)</option>
+                    <option th:value="ROLE_LABORATORY">Laboratory</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword" class="control-label">Confirm password</label>
+                <input id="confirmPassword" class="form-control" type="password" th:field="*{confirmPassword}" required/>
+                <p  th:if="${#fields.hasErrors('confirmPassword')}" class="error">Passwords have to match.</p>
+            </div>
+            <button class="btn btn-outline-success" type="submit">Submit</button>
+        </form>
+
+        <a class="btn btn-outline-primary" th:href="@{/auth/login}">Login</a>
+    </div>
+    <div th:replace="fragments/navbar :: requiredLibsFooter"></div>
+</body>
+</html>

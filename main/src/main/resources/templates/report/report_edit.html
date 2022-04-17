@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Report</title>
+    <div th:replace="fragments/navbar :: requiredLibs"></div>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container container-fluid">
+
+        <h1>Update Report</h1>
+
+        <form th:action="@{|/report/${report.id}/edit|}" th:object="${report}" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" readonly="readonly" th:field="*{id}">
+
+            <div class="form-group">
+                <label class="control-label" for="patient">Patient</label>
+                <select class="form-select" id="patient" th:field="*{patient}">
+                    <option th:each="patient : ${patients}" th:text="${patient.username}" th:value="${patient.id}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="laboratory">Laboratory</label>
+                <select class="form-select" id="laboratory" th:field="*{laboratory}">
+                    <option th:each="lab : ${laboratories}" th:text="${lab.username}" th:value="${lab.id}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="diagnosisTitle">Diagnosis Title</label>
+                <input id="diagnosisTitle" class="form-control" th:field="*{diagnosisTitle}"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="diagnosisDetails">Diagnosis Description</label>
+                <input id="diagnosisDetails" style="resize:both;" class="form-control" th:field="*{diagnosisDetails}"/>
+            </div>
+            <button class="btn btn-outline-success" type="submit">Submit</button>
+
+        </form>
+
+    </div>
+    <div th:replace="fragments/navbar :: requiredLibsFooter"></div>
+</body>
+</html>

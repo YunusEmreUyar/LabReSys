@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page - LabReSys</title>
+    <!-- Required libs included here. -->
+    <div th:replace="fragments/navbar :: requiredLibs"></div>
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <br>
+    <div id="report-search-form">
+        <form th:action="@{/sort-and-filter}" method="get" class="row align-items-center">
+            <div class="col-md-9">
+                <input type="search" class="form-control" name="contains" th:value="${contains}" id="searchField" placeholder="Search (case sensitive)">
+            </div>
+            <div class="col-md-3">
+                <input type="submit" class="btn btn-outline-primary" value="Search">
+            </div>
+        </form>
+    </div>
+
+
+    <div class="container container-fluid">
+
+        <br>
+        <div class="row md-6">
+            <table class="table table-striped table-hover table-responsive-md">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Laboratory Username</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Patient Surname</th>
+                        <th scope="col"><a th:href="@{|/sort-and-filter?ordering=${reverseOrdering}&contains=${contains}|}">Creation Date</a></th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="report : ${reports}">
+                    <th scope="row" th:text="${report.id}"></th>
+                    <td th:text="${report.laboratory.username}"></td>
+                    <td th:text="${report.patient.name}"></td>
+                    <td th:text="${report.patient.surname}"></td>
+                    <td th:text="${#temporals.format(report.date, 'dd-MM-yyyy HH:mm')}"></td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <span sec:authorize="isAuthenticated()">
+                                <a sec:authorize="hasRole('LABORATORY')" th:href="@{/report/{id}/(id=${report.id})}" class="btn btn-sm btn-outline-primary">View</a>
+                                <a sec:authorize="hasRole('LABORATORY')" th:href="@{/report/{id}/edit(id=${report.id})}" class="btn btn-sm btn-outline-info">Edit</a>
+                            </span>
+
+                            <div sec:authorize="isAuthenticated()">
+                                <form sec:authorize="hasRole('ADMIN')" style="width: fit-content;" method="post" th:action="@{/report/{id}/delete(id=${report.id})}">
+                                <input type="submit" class="btn btn-sm btn-outline-danger" value="Delete" />
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div th:replace="fragments/navbar :: requiredLibsFooter"></div>
+</body>
+</html>
