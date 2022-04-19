@@ -5,6 +5,7 @@ import com.yemreu.main.annotation.UniqueTc;
 import com.yemreu.main.annotation.UniqueUsername;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @PasswordMatches
+@EqualsAndHashCode
 public class UserRegisterDto {
     @NotNull
     private String name;

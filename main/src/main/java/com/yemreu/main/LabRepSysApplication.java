@@ -35,7 +35,7 @@ public class LabRepSysApplication implements CommandLineRunner{
 		User user = userRepository.save(new User(
 				"Yunus",
 				"YunusEmre",
-				passwordEncoder.encode("fplanet"),
+				passwordEncoder.encode("passwd"),
 				"Uyar",
 				Arrays.asList(
 						new Role("ROLE_USER"),
@@ -48,7 +48,7 @@ public class LabRepSysApplication implements CommandLineRunner{
 				"Burak",
 				"Burak21",
 				passwordEncoder.encode("asd123"),
-				"Deneme",
+				"Yıldız",
 				Arrays.asList(
 						new Role("ROLE_USER")
 				),

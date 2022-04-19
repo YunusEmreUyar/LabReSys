@@ -11,15 +11,13 @@
     <div class="container container-fluid md-6">
         <br>
         <div class="card">
-            <!--  th:src="@{/${report.getPhotoPath}}" Did not work, I do not know why. -->
-            <img th:src="@{${'/' + report.getPhotoPath}}"  class="card-img-top" alt="Report photo"/>
+            <img th:src="${report.photo==null?'/img/defaultPhoto.jpg': report.getPhotoPath}"  class="card-img-top" alt="Report photo"/>
             <div class="card-body">
                 <h1 class="card-title" th:text="'Patient ' + ${report.patient.name} + ' ' + ${report.patient.surname}"></h1>
                 <p class="card-text" th:text="${report.diagnosisTitle}"></p>
                 <hr>
                 <p class="card-text" th:text="${report.diagnosisDetails}"></p>
-                <p class="card-text" th:text="'From ' + ${report.laboratory.name} + ' ' + ${report.laboratory.surname} + ' at'">
-                    <span class="justify-content-end" th:text="${#temporals.format(report.date, 'dd-MM-yyyy HH:mm')}"></span>
+                <p class="card-text" th:text="'From ' + ${report.laboratory.name} + ' ' + ${report.laboratory.surname} + ' at ' + ${#temporals.format(report.date, 'dd-MM-yyyy')}">
                 </p>
             </div>
         </div>

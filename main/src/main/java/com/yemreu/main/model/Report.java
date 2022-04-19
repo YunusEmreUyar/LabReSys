@@ -56,9 +56,9 @@ public class Report {
     @Transient
     public String getPhotoPath() {
         if (photo == null || id == null) {
-            return "report-images/defaultPhoto.jpg";
+            return null;
         }
-        return "report-images/" + id + "/" + photo;
+        return "/report-images/" + id + "/" + photo;
     }
 
 }

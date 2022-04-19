@@ -1,6 +1,7 @@
 package com.yemreu.main.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Table(name = "users")
+@EqualsAndHashCode
 public class User {
     // Unique identifier of user model.
     @Id
