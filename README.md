@@ -43,7 +43,7 @@ Test yazmayı henüz öğrendiğim için testler tamamlanmamıştır.
 
 ## Kullanım
 
-1. cd https://github.com/YunusEmreUyar/LabReSys.git (Repo'yu indirin.)
+1. git clone https://github.com/YunusEmreUyar/LabReSys.git (Repo'yu indirin.)
 2. cd LabReSys/main (cmd ya da explorer üzerinden main klasörüne gidin)
 3. mvn clean install (cmd ile yandaki kodu çalıştırın)
 4. cd target (build alınan hedef klasöre gidin)
