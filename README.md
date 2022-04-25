@@ -41,6 +41,8 @@ uygulamayı kullanmadan önce bir admin tarafından onaylanmalıdır.
 
 Test yazmayı henüz öğrendiğim için testler tamamlanmamıştır.
 
+Admin sayfası eklenecektir.
+
 ## Kullanım
 
 1. git clone https://github.com/YunusEmreUyar/LabReSys.git (Repo'yu indirin.)
