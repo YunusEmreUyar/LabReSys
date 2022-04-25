@@ -2,7 +2,7 @@
 
 ## Açıklama
 
-Bu proje; Java, Thymeleaf,  JPA, Maven, Spring ve Bootstrap teknolojileriyle
+Bu proje; Java, Thymeleaf,  JPA, Maven, Spring, Spring Security ve Bootstrap teknolojileriyle
 yapılmış bir laboratuvar raporlama sistemidir.    
 
 Uygulama açılırken test amaçları için gerekli olan modelleri oluşturması için 
