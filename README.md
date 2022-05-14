@@ -5,6 +5,8 @@
 Bu proje; Java, Thymeleaf,  JPA, Maven, Spring, Spring Security ve Bootstrap teknolojileriyle
 yapılmış bir laboratuvar raporlama sistemidir.    
 
+Özgür Yazılım A.Ş'de staja kabulüm için benden istenilen yazılımdır.
+
 Uygulama açılırken test amaçları için gerekli olan modelleri oluşturması için 
 CommandLineRunner arayüzünü implemente etmektedir. Açıldığında içerisinde 2 farklı kullanıcı (biri laborant diğeri hasta)
 ve 2 farklı rapor ile açılmaktadır.
